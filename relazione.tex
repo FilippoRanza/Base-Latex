@@ -5,6 +5,9 @@
 \usepackage{amsmath}
 \usepackage{geometry}
 \usepackage{graphicx}
+% inserisci altre cartelle dove sono presenti le immagini
+\graphicspath{{immagini/}}
+
 \usepackage{calc}
 \usepackage{xcolor}
 \usepackage{tabularx}
@@ -20,6 +23,12 @@
 }
 
 \usepackage[italian]{cleveref}
+
+\usepackage[backend=biber,
+style=alphabetic,
+sorting=ynt]{biblatex}
+\addbibresource{bibliografia.bib}
+
 
 % Decommenta per longtable
 %\usepackage{longtable}

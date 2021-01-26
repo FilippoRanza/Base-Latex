@@ -1,5 +1,8 @@
 *..aux
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.fdb_latexmk
 *.fls
 *.lof
@@ -7,5 +10,6 @@
 *.lot
 *.out
 *.pdf
+*.run.xml
 *.synctex.gz
 *.toc
