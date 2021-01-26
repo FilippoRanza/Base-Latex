@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[italian]{babel}
+\usepackage{emptypage}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{float}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=black
+}
+
+\usepackage[italian]{cleveref}
+
+% Decommenta per longtable
+%\usepackage{longtable}
+% Decommenta per usare note a pie pagina in tabelle
+%\usepackage{tablefootnote}
+
+% Decommenta per usare pseudocodice
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\floatname{algorithm}{Algoritmo}
+%\renewcommand{\listalgorithmname}{Elenco degli Algoritmi}
+
+% Decommanenta per usare appendici
+% \usepackage{appendix}
+
+% Decommenta per inserire programmi
+%\usepackage{listings}
+
+% Decommenta per usare tikz
+%\usepackage{tikz}
+%\usetikzlibrary{automata, positioning, arrows, shapes}
+
+
+\begin{document}
+
+    % Conteggio pagine con numeri romani
+    \frontmatter
+
+    %pagina del titolo
+    \include{pagina-titolo}
+  
+    %Indice principale 
+    \tableofcontents
+    
+    % Deommenta per indice programmi
+    %\lstlistoflistings
+    
+    % Decommenta per indice pseudocodice
+    %\listofalgorithms
+
+    % Indice delle tabelle
+    \listoftables
+    
+    % Indice delle figure
+    \listoffigures
+
+    % Conteggio pagine con numeri arabi
+    \mainmatter
+
+  
+
+\end{document}
