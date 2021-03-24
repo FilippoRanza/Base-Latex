@@ -13,6 +13,16 @@
 \usepackage{tabularx}
 \usepackage{float}
 
+
+% Imposta un Header migliore:
+% numero  nome capitolo a sinistra 
+% numero pagina a destra
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,LO]{\leftmark}
+\fancyhead[LE,RO]{\thepage}
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -61,6 +71,42 @@ sorting=ynt]{biblatex}
 %\usepackage{tikz}
 %\usetikzlibrary{automata, positioning, arrows, shapes}
 
+% Imposta i comandi \Section, \Sref, \Chapter, \insec e \inputchap
+\newcommand{\Section}[2]{No section before chapter please}
+\newcommand{\Sref}[2][Add Chapter]{Add Chapter}
+
+\newcommand{\Chapter}[2]{
+    \chapter{#1}\label{ch:#2}\thispagestyle{empty}
+    \renewcommand{\Section}[2]{
+        \section{##1}\label{sec:#2:##2}
+    }
+    \renewcommand{\Sref}[2][#2]{\Cref{sec:##1:##2}}
+}
+
+
+% wrap del comando input che conterrà in automatico la directory attuale
+\newcommand{\insec}[1]{Renew this command}
+
+% importa un file tex dalla sottocartela 'algorithms' della cartella dell'attuale capitolo
+%\newcommand{\inalgo}[1]{Renew this command}
+% riferimento all'ultimo algoritmo importato
+%\newcommand{\algoref}{Renew this command}
+% label per l'algoritmo auttuale
+%\newcommand{\algolbl}{Renew this command}
+
+% ridefinisce i comandi sopra in modo che facciano ciò che ci si aspetta da loro
+\newcommand{\setcodedir}[1]{
+    \renewcommand{\insec}[1]{\input{#1/##1}}
+    %\renewcommand{\inalgo}[1]{\input{#1/algorithms/##1.algo}}
+}
+
+% usando questo per importare un capitolo si abilitano i comandi \insec e \inalgo 
+\newcommand{\inputchap}[1]{
+    \setcodedir{#1}
+    %\renewcommand{\algolbl}[1]{\label{algo:#1:##1}}
+    \include{#1}
+}
+
 
 \begin{document}
 
@@ -71,18 +117,22 @@ sorting=ynt]{biblatex}
     \include{pagina-titolo}
   
     %Indice principale 
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
     \tableofcontents
     
     % Deommenta per indice programmi
     %\lstlistoflistings
     
     % Decommenta per indice pseudocodice
+    %\addtocontents{loa}{\protect\thispagestyle{empty}}
     %\listofalgorithms
 
     % Indice delle tabelle
+    \addtocontents{lot}{\protect\thispagestyle{empty}}
     \listoftables
     
     % Indice delle figure
+    \addtocontents{lof}{\protect\thispagestyle{empty}}
     \listoffigures
 
     % Conteggio pagine con numeri arabi
